@@ -16,4 +16,7 @@
 
 # Step 3: create api endpoint with microrouter
 
+1. Use microrouter to create new GET route /hello/:name
+2. Use postman or directly curl and GET request on http://localhost:3000/hello/belleepoque
+
 # Step 4: add middleware - display log with winston
