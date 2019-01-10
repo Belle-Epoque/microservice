@@ -1,6 +1,11 @@
 import { send, json } from "micro";
 import { router, get, post } from "microrouter";
-import { loggerDecorator as logger } from "./helpers/decorator";
+
+import compose from "./helpers/compose";
+import {
+  loggerDecorator as logger,
+  myDecoratorWithParams
+} from "./helpers/decorator";
 
 const hello = (req, res) => send(res, 200, `Hello ${req.params.who}`);
 
@@ -19,4 +24,7 @@ const userService = router(
   post("/*", notfound)
 );
 
-export default logger(userService);
+export default compose(
+  logger,
+  myDecoratorWithParams("param1", "param2")
+)(userService);

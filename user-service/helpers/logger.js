@@ -1,6 +1,7 @@
 import { createLogger, format, transports } from "winston";
 
 const { combine, timestamp, printf } = format;
+const level = process.env.LOG_LEVEL || "info";
 
 const myFormat = printf(
   ({ timestamp, level, message, ...data }) =>
@@ -10,7 +11,7 @@ const myFormat = printf(
 const combinedFormat = combine(timestamp(), myFormat);
 
 const logger = createLogger({
-  level: "info",
+  level,
   format: combinedFormat,
   transports: [
     //
