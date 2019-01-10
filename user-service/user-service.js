@@ -8,4 +8,13 @@ const notfound = (req, res) =>
 
 const userService = router(get("/hello/:who", hello), get("/*", notfound));
 
-export default userService;
+const myDecorator = fn => async (req, res) => {
+  console.log("DEBUG micro router params", {
+    req,
+    res
+  });
+
+  return fn(req, res);
+};
+
+export default myDecorator(userService);

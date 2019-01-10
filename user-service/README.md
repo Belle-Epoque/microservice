@@ -20,3 +20,5 @@
 2. Use postman or directly curl and GET request on http://localhost:3000/hello/belleepoque
 
 # Step 4: add middleware - display log with winston
+
+1. Add decorator around userService
